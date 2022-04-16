@@ -14,7 +14,7 @@ class Money:
     def __init__(self, *bills):
         self.bills = [*bills]  # Список всех купюр
         self.count = sum([bill['number'] for bill in self.bills])  # Их количество
-        self.size = 10  # Максимально допустимое количество купюр
+        self.__size = 10  # Максимально допустимое количество купюр
 
     def __add__(self, bill):
         if self.count + bill['number'] <= self.size:
@@ -46,10 +46,9 @@ class Money:
         self.__sorting()
         return self
 
-    def size(self, new=0):
-        if new:
-            self.size = new
-        return self.size
+    @property
+    def size(self):
+        return self.__size
 
     def display(self):
         print("Купюры в кошельке:")
@@ -60,7 +59,7 @@ class Money:
     def __sorting(self):
         cons = {'one': 1, 'two': 2, 'five': 5, 'ten': 10, 'fifty': 50,
                 'hundred': 100, 'five hundred': 500, 'thousand': 1000,
-                'five_thousand': 5000}
+                'five thousand': 5000}
         # Замена строковых значений 'denominator' на числа
         # и добавление их в новых словарь new
         new = []
@@ -80,18 +79,17 @@ class Money:
 
 
 if __name__ == "__main__":
-    # Четыре пачки купюр
+    # Две пачки купюр
     a = {'denominator': "fifty", 'number': 3}
     b = {'denominator': "hundred", 'number': 1}
-    # c = {'denominator': "ten", 'number': 2}
-    # d = {'denominator': "fifty", 'number': 2}
 
-    print("\n### Создание ###")
+    print("\n### Создание  ###")  # Кошелька из двух пачек
     A = Money(a, b)
     A.display()
-    print("\n### Сумма ###")
+    print("\n### Сумма ###")  # Кошелька и пачки b
     A = A + b
     A.display()
-    print("\n### Разность ###")
+    print("\n### Разность ###")  # Кошелька и пачки b
     A = A - b
     A.display()
+
