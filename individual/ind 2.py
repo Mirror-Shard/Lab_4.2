@@ -16,6 +16,10 @@ class Money:
         self.count = sum([bill['number'] for bill in self.bills])  # Их количество
         self.__size = 10  # Максимально допустимое количество купюр
 
+    @property
+    def size(self):
+        return self.__size
+
     def __add__(self, bill):
         if self.count + bill['number'] <= self.size:
             bills = self.bills
@@ -45,10 +49,6 @@ class Money:
         self.bills = bills
         self.__sorting()
         return self
-
-    @property
-    def size(self):
-        return self.__size
 
     def display(self):
         print("Купюры в кошельке:")
