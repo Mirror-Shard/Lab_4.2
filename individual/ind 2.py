@@ -53,8 +53,8 @@ class Money:
     def display(self):
         print("Купюры в кошельке:")
         for bill in self.bills:
-            print(f"Купюра номиналом - {bill['denominator']}. "
-                  f"Количество этих купюр - {bill['number']}")
+            print(f"Купюра - {bill['denominator']}. "
+                  f"Количество - {bill['number']}")
 
     def __sorting(self):
         cons = {'one': 1, 'two': 2, 'five': 5, 'ten': 10, 'fifty': 50,

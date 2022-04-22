@@ -12,18 +12,15 @@ class Interval:
     def __init__(self, first=0, second=0):
         self.first = first
         self.second = second
-        self.span = make_span(self.first, self.second)
 
     def __contains__(self, item):
-        return item in self.span
+        if first <= num <= second:
+            return True
+        else:
+            return False
 
-
-def make_span(first, second):
-    if first < second:
-        span = [i for i in range(first, second)]
-    else:
-        span = [i for i in range(first, second, -1)]
-    return span
+    def display(self):
+        print(f"Интервал начинается с {self.first} и до {self.second}")
 
 
 if __name__ == '__main__':
@@ -33,7 +30,7 @@ if __name__ == '__main__':
         first = int(input("\nВведите левую границу интервала: "))
         second = int(input("Введите правую границу интервала: "))
         a = Interval(first, second)
-        print(a.span)
+        a.display()
 
         # Проверка нахождения числа в интервале
         num = int(input("Введите число: "))
